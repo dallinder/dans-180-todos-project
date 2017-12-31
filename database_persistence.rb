@@ -37,9 +37,6 @@ class DatabasePersistence
 
     result.map do |tuple|
       list_id = tuple["id"].to_i
-      todo_sql = "SELECT * FROM todos WHERE list_id = $1"
-      todo_result = query(todo_sql, list_id)
-
       todos = find_todos_for_list(list_id)
 
       {id: list_id, name: tuple["name"], todos: todos}
